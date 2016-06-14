@@ -32,7 +32,7 @@ public class QuickSort {
         int[] array = {49, 38,65,97,76,13,27,65};
         quickSort(array, 0, array.length -1);
         for (int i = 0; i <array.length; i++) {
-            System.out.println(array[i]);
+            System.out.print(array[i] + " ");
         }
     }
 }

@@ -1,20 +1,19 @@
 /**
  * Created by mohaowen on 11/1/15.
  */
-import javafx.scene.Node;
 
 import java.util.LinkedList;
 import java.util.List;
 
 
 /*
-*  åŠŸèƒ½ï¼šæŠŠä¸€ä¸ªæ•°ç»„çš„å€¼å­˜å…¥äºŒå‰æ ‘ä¸­ï¼Œç„¶åè¿›è¡Œä¸‰ç§æ–¹å¼çš„éå†
+*  ¹¦ÄÜ£º°ÑÒ»¸öÊı×éµÄÖµ´æÈë¶ş²æÊ÷ÖĞ£¬È»ºó½øĞĞÈıÖÖ·½Ê½µÄ±éÀú
 */
 public class BinaryTree {
     private int[] arry = {1,2,3,4,5,6,7,8,9};
     private static List<Node> nodeList = null;
 
-    //å†…éƒ¨ç±»ï¼ŒèŠ‚ç‚¹
+    //ÄÚ²¿Àà£¬½Úµã
     private class Node{
         Node leftChild;
         Node rightChild;
@@ -28,29 +27,29 @@ public class BinaryTree {
 
     public void createBinTree(){
         nodeList = new LinkedList<Node>();
-        //å°†ä¸€ä¸ªæ•°ç»„çš„å€¼ä¾æ¬¡è½¬æ¢ä¸ºNodeèŠ‚ç‚¹
+        //½«Ò»¸öÊı×éµÄÖµÒÀ´Î×ª»»ÎªNode½Úµã
         for(int nodeIndex = 0; nodeIndex < arry.length; nodeIndex++){
             nodeList.add(new Node(arry[nodeIndex]));
         }
-        //å¯¹å‰lastParentIndex-1 ä¸ªçˆ¶èŠ‚ç‚¹æŒ‰ç…§çˆ¶èŠ‚ç‚¹ä¸å­©å­èŠ‚ç‚¹çš„æ•°å­—å…³ç³»å»ºç«‹äºŒå‰æ ‘
+        //¶ÔÇ°lastParentIndex-1 ¸ö¸¸½Úµã°´ÕÕ¸¸½ÚµãÓëº¢×Ó½ÚµãµÄÊı×Ö¹ØÏµ½¨Á¢¶ş²æÊ÷
         for(int parentIndex = 0; parentIndex < arry.length/2 - 1; parentIndex++){
-            //å·¦å­©å­
+            //×óº¢×Ó
             nodeList.get(parentIndex).leftChild = nodeList.get(parentIndex * 2 + 1);
-            //å³å­©å­
+            //ÓÒº¢×Ó
             nodeList.get(parentIndex).rightChild = nodeList.get(parentIndex * 2 + 2);
         }
-        //æœ€åä¸€ä¸ªçˆ¶èŠ‚ç‚¹ï¼šå› ä¸ºæœ€åä¸€ä¸ªçˆ¶èŠ‚ç‚¹å¯èƒ½æ²¡æœ‰å³å­©å­ï¼Œæ‰€ä»¥å•ç‹¬å¤„ç†
+        //×îºóÒ»¸ö¸¸½Úµã£ºÒòÎª×îºóÒ»¸ö¸¸½Úµã¿ÉÄÜÃ»ÓĞÓÒº¢×Ó£¬ËùÒÔµ¥¶À´¦Àí
         int lastParentIndex = arry.length /2 - 1;
-        //å·¦å­©å­
+        //×óº¢×Ó
         nodeList.get(lastParentIndex).leftChild = nodeList.get(lastParentIndex *2 + 1);
-        //å³å­©å­ï¼Œå¦‚æœæ•°ç»„çš„é•¿åº¦ä¸ºå¥‡æ•°æ‰å»ºç«‹å³å­©å­
+        //ÓÒº¢×Ó£¬Èç¹ûÊı×éµÄ³¤¶ÈÎªÆæÊı²Å½¨Á¢ÓÒº¢×Ó
         if(arry.length % 2 == 1){
             nodeList.get(lastParentIndex).rightChild = nodeList.get(lastParentIndex *2 + 2);
         }
     }
 
     /*
-    *å…ˆåºéå†
+    *ÏÈĞò±éÀú
     */
     public static void preOrder(Node node){
         if(node == null)  return;
@@ -60,7 +59,7 @@ public class BinaryTree {
     }
 
     /*
-    *ä¸­åºéå†
+    *ÖĞĞò±éÀú
     */
     public static void inOrder(Node node){
         if(node == null) return;
@@ -70,7 +69,7 @@ public class BinaryTree {
     }
 
     /*
-    *ååºéå†
+    *ºóĞò±éÀú
     */
     public static void postOrder(Node node){
         if(node == null) return;
@@ -82,18 +81,18 @@ public class BinaryTree {
     public static void main(String[] args) {
         BinaryTree BTree = new BinaryTree();
         BTree.createBinTree();
-        //nodeListä¸­ç¬¬0ä¸ªç´¢å¼•å¤„çš„å€¼ä¸ºæ ¹ç»“ç‚¹
+        //nodeListÖĞµÚ0¸öË÷Òı´¦µÄÖµÎª¸ù½áµã
         Node root = nodeList.get(0);
 
-        System.out.println("å…ˆåºéå†ï¼š ");
+        System.out.println("ÏÈĞò±éÀú£º ");
         preOrder(root);
         System.out.println();
 
-        System.out.println("ä¸­åºéå†ï¼š ");
+        System.out.println("ÖĞĞò±éÀú£º ");
         inOrder(root);
         System.out.println();
 
-        System.out.println("ååºéå†ï¼š ");
+        System.out.println("ºóĞò±éÀú£º ");
         postOrder(root);
         System.out.println();
     }
